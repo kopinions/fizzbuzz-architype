@@ -23,7 +23,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -std=gnu++17")
 enable_testing()
 
 macro(gtest TESTNAME)
-    add_executable(${TESTNAME} ${ARGN})
+    file(GLOB TEST_SRC "${CMAKE_CURRENT_LIST_DIR}/../src/*.cpp")
+    add_executable(${TESTNAME} ${ARGN} ${TEST_SRC})
     target_link_libraries(${TESTNAME} PUBLIC gtest gmock gtest_main)
 
     gtest_discover_tests(${TESTNAME}
@@ -31,6 +32,7 @@ macro(gtest TESTNAME)
             PROPERTIES FOLDER "tests")
 endmacro()
 #gtest(TestStudent TestStudent.cpp)
+add_subdirectory(src)
 add_subdirectory(tests)
 
-add_executable(game src/main.cpp)
+add_executable(game main.cpp src/Student.cpp include/Student.h src/Teacher.cpp include/Teacher.h)

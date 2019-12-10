@@ -1,0 +1,1 @@
+add_library(counterlib Student.cpp Teacher.cpp)
