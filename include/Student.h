@@ -11,12 +11,12 @@
 using std::vector;
 using std::string;
 
-enum {
+enum RuleType {
     RULE_ONE,
     RULE_TWO,
     RULE_THREE,
     RULE_FOUR
-} RuleType;
+};
 
 class Student {
 
